@@ -6,7 +6,7 @@ const app = express()
 
 // Database connection
 mongoose
-  .connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/bitgora', {
+  .connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/googlebooks', {
     useNewUrlParser: true,
     useFindAndModify: true,
     useCreateIndex: true,
@@ -30,7 +30,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // Define API routes here
-app.use('/user', require('./routes/book-routes.js'))
+app.use('/book', require('./routes/book-routes.js'))
 
 // Send every other request to the React app
 // Define any API routes before this runs

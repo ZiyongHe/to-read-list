@@ -3,9 +3,8 @@ import { Container } from 'react-bootstrap'
 
 function Search() {
   const handleSearch = (event) => {
-    const input = event.target.value.trim().toLowerCase().split(' ').join('+')
-    const query = `https://www.googleapis.com/books/v1/volumes?q=flowers&key=AIzaSyDUw9dPFHVx5JKmA_EEKyYhlwRA68Y9rMs`
-    const src = 'https://www.googleapis.com/books/v1/volumes?q=ready+player+one'
+    const search = event.target.value.trim().toLowerCase().split(' ').join('+')
+    const query = `https://www.googleapis.com/books/v1/volumes?q=game&key=AIzaSyDUw9dPFHVx5JKmA_EEKyYhlwRA68Y9rMs`
     fetch(query).then((result) =>
       result.items.map((item) => {
         const img = item.volumeInfo.imageLinks
