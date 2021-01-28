@@ -13,7 +13,8 @@ function Search() {
     setInput(search)
   }
 
-  const handleSearch = (input) => {
+  const handleSearch = (input, event) => {
+    event.preventDefault()
     setInput('')
     const query = `https://www.googleapis.com/books/v1/volumes?q=${input}&key=AIzaSyCZ5Bm_AfqWpsNhTxOi7RNLyHrvdGwU17U`
     setInput('')
@@ -27,7 +28,6 @@ function Search() {
           const img = book.volumeInfo.imageLinks
             ? book.volumeInfo.imageLinks.thumbnail
             : imgPlaceholder
-          console.log(img)
           return { ...book, image: img }
         })
 
@@ -37,7 +37,7 @@ function Search() {
 
   return (
     <Container>
-      <form className="my-3">
+      <form className="my-3" onSubmit={(event) => handleSearch(input, event)}>
         <input
           className="w-50"
           type="text"
@@ -45,18 +45,13 @@ function Search() {
           placeholder="Search book here..."
           onChange={(event) => handleInput(event)}
         ></input>
-        <input
-          type="button"
-          value="Search"
-          onClick={() => handleSearch(input)}
-          className="mx-1"
-        ></input>
+        <input type="submit" value="Search" className="mx-1"></input>
       </form>
 
       {books
         ? books.map((book, index) => {
             return (
-              <Row className="p-3">
+              <Row className="p-3" key={index}>
                 <Col xs={3}>
                   <img src={book.image} alt={book.volumeInfo.title} />
                 </Col>
