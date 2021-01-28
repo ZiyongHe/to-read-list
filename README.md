@@ -6,9 +6,9 @@
 
 This is a full stack web app that can search books through google book api, and return a list of books, further to view or save to save list. This app is built with MERN technologies (MongoDB, Express, React and Node.js).
 
-:link: [Link to deployed application](https://ziyonghe.github.io/employee-directory/)
+:link: [Link to deployed application](https://to-read-list.herokuapp.com/)
 
-![application preview](./client/src/utils/preview.PNG)
+![application preview](./client/src/utils/preview.png)
 
 ## Installation and Usage
 
