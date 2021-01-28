@@ -30,7 +30,7 @@ function Search() {
           console.log(img)
           return { ...book, image: img }
         })
-        booksWithImages.map((res) => console.log(res))
+
         setBooks(booksWithImages)
       })
   }
@@ -47,7 +47,7 @@ function Search() {
         ></input>
         <input
           type="button"
-          Value="Search"
+          value="Search"
           onClick={() => handleSearch(input)}
           className="mx-1"
         ></input>
@@ -77,11 +77,11 @@ function Search() {
                     type="button"
                     style={{ width: '70px' }}
                     id="save"
+                    value="Save"
                     onClick={(event) => {
                       saveBook(books[index])
                       event.target.value = 'Saved'
                     }}
-                    value="Save"
                   ></input>
                 </Col>
               </Row>

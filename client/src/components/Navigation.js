@@ -13,9 +13,6 @@ function Navigation() {
             <Link to="/saved" className="nav-link">
               Saved Books
             </Link>
-            <Link to="/" className="nav-link">
-              Search
-            </Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

@@ -9,7 +9,6 @@ router.get('/saved', async (req, res) => {
 
 // save a book
 router.post('/saved', (req, res) => {
-  console.log(req.body)
   Book.create(req.body).then((result) => {
     console.log('The book ' + req.body.title + ' is saved.')
     return res.json(result)
