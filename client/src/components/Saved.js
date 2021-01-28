@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Col, Container, Row } from 'react-bootstrap'
+import { Col, Container, Row, Table } from 'react-bootstrap'
 import { getSavedBooks, deleteBook, viewBook } from '../utils/API'
 
 function Saved() {
@@ -14,10 +14,10 @@ function Saved() {
       <h3 className="row my-5 display-4 justify-content-md-center">
         Saved Books
       </h3>
-      <div className="row">
+      <Table bordered className="row">
         {books.map((book, index) => {
           return (
-            <Row className="p-3">
+            <Row className="p-3" bg={'Secondary'}>
               <Col xs={3}>
                 <img src={book.image} alt={book.title} />
               </Col>
@@ -46,7 +46,7 @@ function Saved() {
             </Row>
           )
         })}
-      </div>
+      </Table>
     </Container>
   )
 }
