@@ -1,6 +1,3 @@
-const API_KEY = 'AIzaSyDUw9dPFHVx5JKmA_EEKyYhlwRA68Y9rMs'
-const key = API_KEY
-
 export function searchBook(title) {}
 
 export function getSavedBooks() {

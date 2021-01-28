@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import { viewBook, saveBook } from '../utils/API'
 import axios from 'axios'
+import imgPlaceholder from '../utils/imgPlaceholder.jpg'
 
 function Search() {
   const [books, setBooks] = useState([])
@@ -22,8 +23,16 @@ function Search() {
       .then((response) => {
         return response.data.items
       })
-      .then((data) => {
-        setBooks(data)
+      .then((bks) => {
+        const booksWithImages = bks.map((book) => {
+          const img = book.volumeInfo.imageLinks
+            ? book.volumeInfo.imageLinks.thumbnail
+            : imgPlaceholder
+          console.log(img)
+          return { ...book, image: img }
+        })
+        booksWithImages.map((res) => console.log(res))
+        setBooks(booksWithImages)
       })
   }
 
@@ -47,23 +56,10 @@ function Search() {
 
       {books
         ? books.map((book, index) => {
-            if (!book.volumeInfo.imageLinks) {
-              book.volumeInfo.imageLinks.thumbnail =
-                '../utils/imgPlaceholder.JPEG'
-            }
-            //not in effect yet
-
             return (
               <Row className="p-3">
                 <Col xs={3}>
-                  <img
-                    src={
-                      book.volumeInfo.imageLinks.thumbnail
-                        ? book.volumeInfo.imageLinks.thumbnail
-                        : '../utils/imgPlaceholder.JPEG'
-                    }
-                    alt={book.volumeInfo.title}
-                  />
+                  <img src={book.image} alt={book.volumeInfo.title} />
                 </Col>
                 <Col xs={8}>
                   <h4>{book.volumeInfo.title}</h4>
