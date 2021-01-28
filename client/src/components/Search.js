@@ -17,7 +17,6 @@ function Search() {
     setInput('')
     const query = `https://www.googleapis.com/books/v1/volumes?q=${input}&key=AIzaSyCZ5Bm_AfqWpsNhTxOi7RNLyHrvdGwU17U`
     setInput('')
-    // // const key = 'AIzaSyDUw9dPFHVx5JKmA_EEKyYhlwRA68Y9rMs'
     axios
       .get(query)
       .then((response) => {

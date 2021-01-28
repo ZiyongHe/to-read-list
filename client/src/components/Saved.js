@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
-import { getSavedBooks, deleteBook } from '../utils/API'
+import { getSavedBooks, deleteBook, viewBook } from '../utils/API'
 
 function Saved() {
   const [books, setBooks] = useState([])
@@ -29,6 +29,7 @@ function Saved() {
                     value="View"
                     style={{ width: '70px' }}
                     className="my-3"
+                    onClick={() => viewBook(book.link)}
                   ></input>
                   <input
                     type="button"
