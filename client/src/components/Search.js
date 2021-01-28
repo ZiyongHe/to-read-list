@@ -16,7 +16,8 @@ function Search() {
   const handleSearch = (input, event) => {
     event.preventDefault()
     setInput('')
-    const query = `https://www.googleapis.com/books/v1/volumes?q=${input}&key=AIzaSyCZ5Bm_AfqWpsNhTxOi7RNLyHrvdGwU17U`
+    const key = process.env.API_KEY
+    const query = `https://www.googleapis.com/books/v1/volumes?q=${input}&key=${key}`
     setInput('')
     axios
       .get(query)
