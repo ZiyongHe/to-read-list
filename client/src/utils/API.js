@@ -4,22 +4,36 @@ const key = API_KEY
 export function searchBook(title) {}
 
 export function getSavedBooks() {
-  return fetch('/book/saved').then((res) => res.json())
+  return fetch('/saved').then((response) => response.json())
 }
 
 export function saveBook(data) {
-  fetch('/book/saved', {
+  const newSave = {
+    title: data.volumeInfo.title,
+    author: data.volumeInfo.authors,
+    description: data.volumeInfo.description,
+    image: data.volumeInfo.imageLinks.thumbnail,
+    link: data.volumeInfo.infoLink,
+  }
+  console.log(newSave)
+  return fetch('/saved', {
     method: 'POST',
-    header: {
+    headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ data }),
-  }).then((res) => res.json())
-  // change button here as saved indicator
+    body: JSON.stringify(newSave),
+  }).then((res) => {
+    console.log(res)
+    res.json()
+  })
 }
 
 export function deleteBook(title) {
-  fetch(`/book/:${title}`, {
+  fetch(`/:${title}`, {
     method: 'DELETE',
   }).then((res) => res.json())
+}
+
+export function viewBook(link) {
+  window.location.href = link
 }

@@ -1,16 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
-import { getSavedBooks } from '../utils/API'
+import { getSavedBooks, deleteBook } from '../utils/API'
 
 function Saved() {
-  const [books, setBooks] = useState([
-    {
-      title: '',
-      author: '',
-      description: '',
-      image: '',
-    },
-  ])
+  const [books, setBooks] = useState([])
 
   useEffect(() => {
     getSavedBooks().then((result) => setBooks(result))
@@ -19,7 +12,7 @@ function Saved() {
   return (
     <Container>
       {books
-        ? books.map((book) => {
+        ? books.map((book, index) => {
             return (
               <Row className="p-3">
                 <Col xs={3}>
@@ -31,8 +24,18 @@ function Saved() {
                   <p>{book.description}</p>
                 </Col>
                 <Col xs={1}>
-                  <button>View</button>
-                  <button>Save</button>
+                  <input
+                    type="button"
+                    value="View"
+                    style={{ width: '70px' }}
+                    className="my-3"
+                  ></input>
+                  <input
+                    type="button"
+                    value="Delete"
+                    style={{ width: '70px' }}
+                    onClick={() => deleteBook(books[index].title)}
+                  ></input>
                 </Col>
               </Row>
             )
