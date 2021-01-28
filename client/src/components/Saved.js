@@ -34,7 +34,9 @@ function Saved() {
                     type="button"
                     value="Delete"
                     style={{ width: '70px' }}
-                    onClick={() => deleteBook(books[index].title)}
+                    onClick={() => {
+                      deleteBook(books[index]._id)
+                    }}
                   ></input>
                 </Col>
               </Row>

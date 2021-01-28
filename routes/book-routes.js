@@ -17,17 +17,17 @@ router.post('/saved', (req, res) => {
 })
 
 // delete a book
-router.delete('/:booktitle', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
-    const result = Book.deleteOne({ title: req.params.booktitle })
+    const result = await Book.findByIdAndDelete(req.params.id)
     if (result.deletedCount === 0) {
       return res.status(400).json({ err: 'Error: Book not found in database.' })
+    } else {
+      console.log('The book "' + result.title + '" is deleted from saved list.')
+      res.status(200).json({ data: result })
     }
-    console.log(
-      'The book ' + req.params.booktitle + ' is deleted from saved list.'
-    )
-    res.status(200).json({ data: result })
   } catch (err) {
+    console.log(err.message)
     res.status(500).json({ err: err.message })
   }
 })

@@ -20,7 +20,6 @@ function Search() {
     axios
       .get(query)
       .then((response) => {
-        console.log(response.data.items)
         return response.data.items
       })
       .then((data) => {

@@ -15,7 +15,6 @@ export function saveBook(data) {
     image: data.volumeInfo.imageLinks.thumbnail,
     link: data.volumeInfo.infoLink,
   }
-  console.log(newSave)
   return fetch('/saved', {
     method: 'POST',
     headers: {
@@ -23,14 +22,17 @@ export function saveBook(data) {
     },
     body: JSON.stringify(newSave),
   }).then((res) => {
-    console.log(res)
     res.json()
   })
 }
 
-export function deleteBook(title) {
-  fetch(`/:${title}`, {
+export function deleteBook(id) {
+  fetch(`/${id}`, {
     method: 'DELETE',
+    headers: {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': 'application/json',
+    },
   }).then((res) => res.json())
 }
 
