@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap'
 import { viewBook, saveBook } from '../utils/API'
 import axios from 'axios'
 import imgPlaceholder from '../utils/imgPlaceholder.jpg'
+const path = require('path')
 
 function Search() {
   const [books, setBooks] = useState([])
@@ -16,7 +17,8 @@ function Search() {
   const handleSearch = (input, event) => {
     event.preventDefault()
     setInput('')
-    const key = process.env.API_KEY
+    const key = process.env.API_KEY || 'AIzaSyCZ5Bm_AfqWpsNhTxOi7RNLyHrvdGwU17U'
+    console.log(process.env.API_KEY)
     const query = `https://www.googleapis.com/books/v1/volumes?q=${input}&key=${key}`
     setInput('')
     axios
